@@ -28,20 +28,21 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à MetaView
 ## Description
 
 MetaView is a Python script that allows reading and writing metadata in image and PDF files. It provides a simple and efficient interface for examining and modifying metadata information associated with these files.
+
 ## Features
 
-    Metadata reading: MetaView allows viewing metadata of image and PDF files, including information such as author, creation date, keywords, etc.
-    Metadata writing: You can also use MetaView to modify file metadata, adding or editing information as needed.
-    Support for image and PDF formats: MetaView supports a variety of common image formats such as JPEG, PNG, as well as PDF files.
+Metadata reading: MetaView allows viewing metadata of image and PDF files, including information such as author, creation date, keywords, etc.
+Metadata writing: You can also use MetaView to modify file metadata, adding or editing information as needed.
+Support for image and PDF formats: MetaView supports a variety of common image formats such as JPEG, PNG, as well as PDF files.
 
 ## Usage
 
 To use MetaView, follow these simple steps:
 
-    Clone this repository or download the metaview.py script file.
-    Make sure you have Python installed on your system.
-    Run the script using the command python metaview.py.
-    Follow the on-screen instructions to select the file you want to work with and choose the option to read or write metadata.
+Clone this repository or download the metaview.py script file.
+Make sure you have Python installed on your system.
+Run the script using the command python metaview.py.
+Follow the on-screen instructions to select the file you want to work with and choose the option to read or write metadata.
 
 ## Example Usage
 
