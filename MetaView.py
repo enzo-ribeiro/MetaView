@@ -119,13 +119,15 @@ if RorW == "1":
     elif IMGorPDF == "2":
         ReadPDF()
     else:
-        print("AAAAAAAAAAAAAAAAAAARGH !!!!")
+        print("Il n'y a que 2 options de disponible pour le moment ;)")
 
 elif RorW == "2":
     IMGorPDF = input("Sur quel type de fichier voulez-vous ecrire ? \n\t(1) - Image\n\t(2) - PDF\n")
     if IMGorPDF == "1":
         WriteIMG()
-    else:
+    elif IMGorPDF == "2":
         WritePDF()
+    else:
+        print("Il n'y a que 2 options de disponible pour le moment ;)")
 else:
-    print("AAAAAAAAAAAAAAAAAAARGH !!!!")
+    print("Il n'y a que 2 options de disponible pour le moment ;)")
