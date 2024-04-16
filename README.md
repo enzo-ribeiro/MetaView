@@ -12,7 +12,7 @@ MetaView est un script Python qui permet de lire et d'écrire dans les métadonn
 Pour utiliser MetaView, suivez ces étapes simples :
 1. Clonez ce dépôt ou téléchargez le fichier script `metaview.py`.
 2. Assurez-vous d'avoir Python installé sur votre système.
-3. Exécutez le script en utilisant la commande `python metaview.py`.
+3. Exécutez le script en utilisant la commande `python3 metaview.py`.
 4. Suivez les instructions à l'écran pour sélectionner le fichier sur lequel vous souhaitez travailler et choisir l'option de lecture ou d'écriture des métadonnées.
 
 ## Exemple d'utilisation
