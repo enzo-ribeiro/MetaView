@@ -1,12 +1,12 @@
 # :fr: MetaView
 
 ## Description
-MetaView est un script Python qui permet de lire et d'écrire dans les métadonnées des fichiers images et PDF. Il offre une interface simple et efficace pour examiner et modifier les informations de métadonnées associées à ces fichiers.
+MetaView est un script Python qui permet de lire et d'écrire dans les métadonnées des fichiers images, DOCX et doc. Il offre une interface simple et efficace pour examiner et modifier les informations de métadonnées associées à ces fichiers.
 
 ## Fonctionnalités
-- Lecture des métadonnées : MetaView permet de visualiser les métadonnées des fichiers images et PDF, y compris les informations telles que l'auteur, la date de création, les mots-clés, etc.
+- Lecture des métadonnées : MetaView permet de visualiser les métadonnées des fichiers images, PDF et DOCX, y compris les informations telles que l'auteur, la date de création, les mots-clés, etc.
 - Écriture dans les métadonnées : Vous pouvez également utiliser MetaView pour modifier les métadonnées des fichiers, en ajoutant ou en modifiant des informations selon vos besoins.
-- Support des formats d'image et de PDF : MetaView prend en charge une variété de formats d'image courants tels que JPEG, PNG, ainsi que des fichiers PDF.
+- Support des formats d'image, de PDF et DOCX : MetaView prend en charge une variété de formats d'image courants tels que JPEG, PNG, ainsi que des fichiers PDF et DOCX.
 
 ## Utilisation
 Pour utiliser MetaView, suivez ces étapes simples :
@@ -27,13 +27,13 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à MetaView
 # :us: MetaView
 ## Description
 
-MetaView is a Python script that allows reading and writing metadata in image and PDF files. It provides a simple and efficient interface for examining and modifying metadata information associated with these files.
+MetaView is a Python script that allows reading and writing metadata in image, PDF and DOCX files. It provides a simple and efficient interface for examining and modifying metadata information associated with these files.
 
 ## Features
 
 - Metadata reading: MetaView allows viewing metadata of image and PDF files, including information such as author, creation date, keywords, etc.
 - Metadata writing: You can also use MetaView to modify file metadata, adding or editing information as needed.
-- Support for image and PDF formats: MetaView supports a variety of common image formats such as JPEG, PNG, as well as PDF files.
+- Support for image, PDF and DOCX formats: MetaView supports a variety of common image formats such as JPEG, PNG, as well as PDF and DOCX files.
 
 ## Usage
 
