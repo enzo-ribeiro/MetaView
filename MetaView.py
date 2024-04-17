@@ -5,6 +5,15 @@ from rich.table import Table
 from pypdf import PdfReader, PdfWriter
 from datetime import datetime
 from docx import Document
+import subprocess
+import platform
+from colorama import Fore, Back, Style, init
+
+def clear_terminal():
+    if platform.system() == 'Windows':
+        subprocess.call('cls', shell=True)
+    else:
+        subprocess.call('clear', shell=True)
 
 def ReadIMG():
     image_input = input("Quel est le chemin de l'image ? \n")
@@ -101,7 +110,7 @@ def WritePDF():
 
 def ReadDOCX():
     try:
-        path = str(input("Quel est le chemin du fichier .docx ?\n"))
+        path = str(input("Quel est le chemin du fichier .docx (odt fonctionne aussi) ?\n"))
         doc = Document(path)
         metadata = doc.core_properties
 
@@ -124,7 +133,7 @@ def ReadDOCX():
 
 def WriteDOCX():
     try:
-        path = str(input("Quel est le chemin du fichier .docx ?\n"))
+        path = str(input("Quel est le chemin du fichier .docx (odt fonctionne aussi) ?\n"))
         doc = Document(path)
         metadata = doc.core_properties
 
@@ -164,20 +173,22 @@ def WriteDOCX():
     except Exception as e:
         print("An error occurred:", e)
 
+
+clear_terminal()
 ascii_font = """
-• ▌ ▄ ·. ▄▄▄ .▄▄▄▄▄ ▄▄▄·  ▌ ▐·▪  ▄▄▄ .▄▄▌ ▐ ▄▌
-·██ ▐███▪▀▄.▀·•██  ▐█ ▀█ ▪█·█▌██ ▀▄.▀·██· █▌▐█
-▐█ ▌▐▌▐█·▐▀▀▪▄ ▐█.▪▄█▀▀█ ▐█▐█•▐█·▐▀▀▪▄██▪▐█▐▐▌
-██ ██▌▐█▌▐█▄▄▌ ▐█▌·▐█ ▪▐▌ ███ ▐█▌▐█▄▄▌▐█▌██▐█▌
-▀▀  █▪▀▀▀ ▀▀▀  ▀▀▀  ▀  ▀ . ▀  ▀▀▀ ▀▀▀  ▀▀▀▀ ▀▪
+• ▌ ▄ ·.  ▄▄▄.▄▄▄▄▄ ▄▄▄·  ▌ ▐· ▀  ▄▄▄. ▄▄▌ ▐ ▄▌
+·██ ▐███▪ ▀▄.▀•██  ▐█ ▀█ ▪█·█▌██  ▀▄.▀·██· █▌▐█
+▐█ ▌▐▌▐█·▐▀▀   ▐█.▪▄█▀▀█ ▐█▐█•▐█·▐▀▀   ██▪▐█▐▐▌
+██ ██▌▐█▌▐█▄▄▌ ▐█▌·▐█ ▪▐▌ ███ ▐█▌▐█▄▄▌ ▐█▌██▐█▌
+▀▀  █▪▀▀▀ ▀▀▀  ▀▀▀  ▀  ▀ . ▀  ▀▀▀ ▀▀▀   ▀▀▀▀ ▀▪
 """
 
-print(ascii_font)
+print(Fore.GREEN + ascii_font + Fore.RESET)
 
 RorW = input("Que voulez-vous faire sur les metadonnées du fichiers ?\n\t(1) - Lire\n\t(2) - Modifier\n")
 
 if RorW == "1":
-    IMGorPDF = input("Quel type de fichier voulez-vous analyser ? \n\t(1) - Image \n\t(2) - PDF\n\t(3) - Word\n")
+    IMGorPDF = input("Quel type de fichier voulez-vous analyser ? \n\t(1) - Image \n\t(2) - PDF \n\t(3) - Word \n")
     if IMGorPDF == "1":
         ReadIMG()
     elif IMGorPDF == "2":
@@ -196,6 +207,6 @@ elif RorW == "2":
     elif IMGorPDF == "3":
         WriteDOCX()
     else:
-        print("Il n'y a que 2 options de disponible pour le moment ;)")
+        print("Il n'y a que 3 options de disponible pour le moment ;)")
 else:
-    print("Il n'y a que 2 options de disponible pour le moment ;)")
+    print("Il n'y a que 3 options de disponible pour le moment ;)")
