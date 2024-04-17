@@ -122,6 +122,48 @@ def ReadDOCX():
     except Exception as e:
         print("An error occurred:", e)
 
+def WriteDOCX():
+    try:
+        path = str(input("Quel est le chemin du fichier .docx ?\n"))
+        doc = Document(path)
+        metadata = doc.core_properties
+
+        table = Table(title="Current Metadata", style="cyan")
+        table.add_column("Key", justify="center", style="magenta")
+        table.add_column("Value", justify="center", style="magenta")
+
+        table.add_row("Document Title", metadata.title)
+        table.add_row("Author", metadata.author)
+        table.add_row("Subject", metadata.subject)
+        table.add_row("Keywords", metadata.keywords)
+        table.add_row("Created", datetime.strftime(metadata.created, "%Y-%m-%d %H:%M:%S") if metadata.created else "")
+        table.add_row("Last Modified", datetime.strftime(metadata.modified, "%Y-%m-%d %H:%M:%S") if metadata.modified else "")
+
+        metadata.title = str(input("Quel est le titre de ce fichier ?\n"))
+        metadata.author = str(input("Qui est l'autheur de ce fichier ?\n"))
+        metadata.subject = str(input("Quel est sujet de ce fichier ?\n"))
+        metadata.keywords = str(input("Quel est le tag de ce fichier ?\n"))
+
+        doc.save(path)
+        print("Metadata updated successfully!")
+
+        table = Table(title="New Metadata", style="cyan")
+        table.add_column("Key", justify="center", style="magenta")
+        table.add_column("Value", justify="center", style="magenta")
+
+        table.add_row("Document Title", metadata.title)
+        table.add_row("Author", metadata.author)
+        table.add_row("Subject", metadata.subject)
+        table.add_row("Keywords", metadata.keywords)
+        table.add_row("Created", datetime.strftime(metadata.created, "%Y-%m-%d %H:%M:%S") if metadata.created else "")
+        table.add_row("Last Modified",datetime.strftime(metadata.modified, "%Y-%m-%d %H:%M:%S") if metadata.modified else "")
+
+        console = Console()
+        console.print(table)
+
+    except Exception as e:
+        print("An error occurred:", e)
+
 ascii_font = """
 • ▌ ▄ ·. ▄▄▄ .▄▄▄▄▄ ▄▄▄·  ▌ ▐·▪  ▄▄▄ .▄▄▌ ▐ ▄▌
 ·██ ▐███▪▀▄.▀·•██  ▐█ ▀█ ▪█·█▌██ ▀▄.▀·██· █▌▐█
@@ -146,11 +188,13 @@ if RorW == "1":
         print("Il n'y a que 2 options de disponible pour le moment ;)")
 
 elif RorW == "2":
-    IMGorPDF = input("Sur quel type de fichier voulez-vous ecrire ? \n\t(1) - Image\n\t(2) - PDF\n")
+    IMGorPDF = input("Sur quel type de fichier voulez-vous ecrire ? \n\t(1) - Image \n\t(2) - PDF\n\t(3) - Word\n")
     if IMGorPDF == "1":
         WriteIMG()
     elif IMGorPDF == "2":
         WritePDF()
+    elif IMGorPDF == "3":
+        WriteDOCX()
     else:
         print("Il n'y a que 2 options de disponible pour le moment ;)")
 else:
