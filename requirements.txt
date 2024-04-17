@@ -1,3 +1,5 @@
 pillow 
 rich
 pypdf
+docx
+python-docx
