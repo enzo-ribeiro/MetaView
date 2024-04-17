@@ -4,6 +4,7 @@ from rich.console import Console
 from rich.table import Table
 from pypdf import PdfReader, PdfWriter
 from datetime import datetime
+from docx import Document
 
 def ReadIMG():
     image_input = input("Quel est le chemin de l'image ? \n")
@@ -15,7 +16,7 @@ def ReadIMG():
         for tag, value in infos.items():
             decoded = TAGS.get(tag, tag)
             ret[decoded] = value
-        table = Table(title="MetaData", style="cyan")
+        table = Table(title="IMG MetaData", style="cyan")
         table.add_column("Key", justify="center", style="magenta")
         table.add_column("Value", justify="center", style="magenta")
         for key, value in ret.items():
@@ -98,6 +99,29 @@ def WritePDF():
     with open(modifName, "wb") as f:
         pdf_writer.write(f)
 
+def ReadDOCX():
+    try:
+        path = str(input("Quel est le chemin du fichier .docx ?\n"))
+        doc = Document(path)
+        metadata = doc.core_properties
+
+        table = Table(title="DOCX Metadata", style="cyan")
+        table.add_column("Key", justify="center", style="magenta")
+        table.add_column("Value", justify="center", style="magenta")
+
+        table.add_row("Document Title", metadata.title)
+        table.add_row("Author", metadata.author)
+        table.add_row("Subject", metadata.subject)
+        table.add_row("Keywords", metadata.keywords)
+        table.add_row("Created", datetime.strftime(metadata.created, "%Y-%m-%d %H:%M:%S") if metadata.created else "")
+        table.add_row("Last Modified", datetime.strftime(metadata.modified, "%Y-%m-%d %H:%M:%S") if metadata.modified else "")
+
+
+        console = Console()
+        console.print(table)
+    except Exception as e:
+        print("An error occurred:", e)
+
 ascii_font = """
 • ▌ ▄ ·. ▄▄▄ .▄▄▄▄▄ ▄▄▄·  ▌ ▐·▪  ▄▄▄ .▄▄▌ ▐ ▄▌
 ·██ ▐███▪▀▄.▀·•██  ▐█ ▀█ ▪█·█▌██ ▀▄.▀·██· █▌▐█
@@ -111,11 +135,13 @@ print(ascii_font)
 RorW = input("Que voulez-vous faire sur les metadonnées du fichiers ?\n\t(1) - Lire\n\t(2) - Modifier\n")
 
 if RorW == "1":
-    IMGorPDF = input("Quel type de fichier voulez-vous analyser ? \n\t(1) - Image \n\t(2) - PDF\n")
+    IMGorPDF = input("Quel type de fichier voulez-vous analyser ? \n\t(1) - Image \n\t(2) - PDF\n\t(3) - Word\n")
     if IMGorPDF == "1":
         ReadIMG()
     elif IMGorPDF == "2":
         ReadPDF()
+    elif IMGorPDF == "3":
+        ReadDOCX()
     else:
         print("Il n'y a que 2 options de disponible pour le moment ;)")
 
