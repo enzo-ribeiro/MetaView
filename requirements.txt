@@ -3,3 +3,6 @@ rich
 pypdf
 docx
 python-docx
+subprocess
+platform
+colorama
