@@ -19,7 +19,6 @@ def ReadIMG():
         table.add_column("Key", justify="center", style="magenta")
         table.add_column("Value", justify="center", style="magenta")
         for key, value in ret.items():
-            #print(key, " - ", value)
             if key == "UserComment":
                 value=value.replace("\x00".encode(), ''.encode())
             table.add_row(str(key),str(value))
@@ -39,7 +38,6 @@ def WriteIMG():
 
     image_without_exif.save(image_input)
 
-    # as a good practice, close the file handler after saving the image.
     image_without_exif.close()
     print("Les metadonnées ont été supprimé !")
 
