@@ -47,9 +47,9 @@ def WriteIMG():
     image_without_exif.putdata(data)
 
     image_without_exif.save(image_input)
-
-    image_without_exif.close()
     print("Les metadonnées ont été supprimé !")
+    
+    image_without_exif.close()
 
 def ReadPDF():
     pdf_input = input("Quel est le chemin de le PDF ? \n")
