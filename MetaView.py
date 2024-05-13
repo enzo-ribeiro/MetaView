@@ -15,6 +15,16 @@ def clear_terminal():
     else:
         subprocess.call('clear', shell=True)
 
+    ascii_font = """
+    • ▌ ▄ ·.  ▄▄▄.▄▄▄▄▄ ▄▄▄·  ▌ ▐· ▀  ▄▄▄. ▄▄▌ ▐ ▄▌
+    ·██ ▐███▪ ▀▄.▀•██  ▐█ ▀█ ▪█·█▌██  ▀▄.▀·██· █▌▐█
+    ▐█ ▌▐▌▐█·▐▀▀   ▐█.▪▄█▀▀█ ▐█▐█•▐█·▐▀▀   ██▪▐█▐▐▌
+    ██ ██▌▐█▌▐█▄▄▌ ▐█▌·▐█ ▪▐▌ ███ ▐█▌▐█▄▄▌ ▐█▌██▐█▌
+    ▀▀  █▪▀▀▀ ▀▀▀  ▀▀▀  ▀  ▀ . ▀  ▀▀▀ ▀▀▀   ▀▀▀▀ ▀▪
+    """
+
+    print(Fore.GREEN + ascii_font + Fore.RESET)
+
 def ReadIMG():
     image_input = input("Quel est le chemin de l'image ? \n")
     image = Image.open(image_input)
@@ -47,9 +57,9 @@ def WriteIMG():
     image_without_exif.putdata(data)
 
     image_without_exif.save(image_input)
-    print("Les metadonnées ont été supprimé !")
-    
+
     image_without_exif.close()
+    print("Les metadonnées ont été supprimé !")
 
 def ReadPDF():
     pdf_input = input("Quel est le chemin de le PDF ? \n")
@@ -124,10 +134,12 @@ def ReadDOCX():
         table.add_row("Keywords", metadata.keywords)
         table.add_row("Created", datetime.strftime(metadata.created, "%Y-%m-%d %H:%M:%S") if metadata.created else "")
         table.add_row("Last Modified", datetime.strftime(metadata.modified, "%Y-%m-%d %H:%M:%S") if metadata.modified else "")
-
+        table.add_row("Last Modified By", metadata.last_modified_by)
 
         console = Console()
         console.print(table)
+
+
     except Exception as e:
         print("An error occurred:", e)
 
@@ -147,11 +159,13 @@ def WriteDOCX():
         table.add_row("Keywords", metadata.keywords)
         table.add_row("Created", datetime.strftime(metadata.created, "%Y-%m-%d %H:%M:%S") if metadata.created else "")
         table.add_row("Last Modified", datetime.strftime(metadata.modified, "%Y-%m-%d %H:%M:%S") if metadata.modified else "")
+        table.add_row("Last Modified By", metadata.last_modified_by)
 
         metadata.title = str(input("Quel est le titre de ce fichier ?\n"))
         metadata.author = str(input("Qui est l'autheur de ce fichier ?\n"))
         metadata.subject = str(input("Quel est sujet de ce fichier ?\n"))
         metadata.keywords = str(input("Quel est le tag de ce fichier ?\n"))
+        metadata.last_modified_by = str(input("Qui a été le fichier en dernier ?\n"))
 
         doc.save(path)
         print("Metadata updated successfully!")
@@ -166,6 +180,7 @@ def WriteDOCX():
         table.add_row("Keywords", metadata.keywords)
         table.add_row("Created", datetime.strftime(metadata.created, "%Y-%m-%d %H:%M:%S") if metadata.created else "")
         table.add_row("Last Modified",datetime.strftime(metadata.modified, "%Y-%m-%d %H:%M:%S") if metadata.modified else "")
+        table.add_row("Last Modified By", metadata.last_modified_by)
 
         console = Console()
         console.print(table)
@@ -175,15 +190,6 @@ def WriteDOCX():
 
 
 clear_terminal()
-ascii_font = """
-• ▌ ▄ ·.  ▄▄▄.▄▄▄▄▄ ▄▄▄·  ▌ ▐· ▀  ▄▄▄. ▄▄▌ ▐ ▄▌
-·██ ▐███▪ ▀▄.▀•██  ▐█ ▀█ ▪█·█▌██  ▀▄.▀·██· █▌▐█
-▐█ ▌▐▌▐█·▐▀▀   ▐█.▪▄█▀▀█ ▐█▐█•▐█·▐▀▀   ██▪▐█▐▐▌
-██ ██▌▐█▌▐█▄▄▌ ▐█▌·▐█ ▪▐▌ ███ ▐█▌▐█▄▄▌ ▐█▌██▐█▌
-▀▀  █▪▀▀▀ ▀▀▀  ▀▀▀  ▀  ▀ . ▀  ▀▀▀ ▀▀▀   ▀▀▀▀ ▀▪
-"""
-
-print(Fore.GREEN + ascii_font + Fore.RESET)
 
 RorW = input("Que voulez-vous faire sur les metadonnées du fichiers ?\n\t(1) - Lire\n\t(2) - Modifier\n")
 
